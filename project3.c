@@ -157,6 +157,16 @@ void sort_matches(teamscore_info_t *ts, int score_placement[], int size){
     // for (i = 0; i < size; i++)
     //    printf("%i\n", score_placement[i]);
 
+    // if points are the same, we need to look at which team has the best goal score
+    // and bump up that team.
+    for (i = 0; i < size - 1; i++){
+        if (ts[score_placement[i]].point == ts[score_placement[i+1]].point){
+            hold = score_placement[i];
+            score_placement[i] = score_placement[i + 1];
+            score_placement[i + 1] = hold;
+        }
+    }
+
 }
 
 
